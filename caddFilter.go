@@ -84,7 +84,17 @@ func main() {
         for scanner.Scan() {
                 line := scanner.Text()
                 s := strings.Split(line, sep)
-                v := strings.Join([]string{s[cols[0]], s[cols[1]], s[cols[2]], s[cols[3]]}, sep)
+                // remove "chr" from chromosome numbers
+                chr := s[cols[0]]
+                chr = strings.ToUpper(chr)
+                chr = strings.ReplaceAll(chr, "CHR", "")
+                v := strings.Join([]string{
+                        chr,
+                        s[cols[1]],
+                        s[cols[2]],
+                        s[cols[3]]},
+                        sep,
+                )
                 variants[v] = line
         }
 
