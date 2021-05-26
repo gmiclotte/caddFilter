@@ -127,9 +127,9 @@ func main() {
 
 	// write all remaining variants without CADD scores
 	missing := false
-	for key, remaining := range variants {
+	for _, remaining := range variants {
 		if len(remaining) > 0 {
-			fmt.Printf("%s\n", key)
+			fmt.Printf("%s\n", remaining)
 			missing = true
 		}
 	}
